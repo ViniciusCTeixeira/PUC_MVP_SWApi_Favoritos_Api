@@ -39,10 +39,6 @@ Este projeto serve para armazenar e gerenciar os favoritos de usuários, fazendo
    docker run -d -p 5000:5000 --name swapi_favoritos-api swapi_favoritos-api
    ```
 
-3. **Acessar a API**:
-
-   A API estará disponível em [http://localhost:5000](http://localhost:5000).
-
 ## Como usar Localmente
 
 1. **Clonar o repositório**:
