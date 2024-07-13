@@ -142,8 +142,6 @@ class FavoriteDetailByTypeUsername(Resource):
     def get(self, type, username):
         try:
             favorite = Favorite.query.filter_by(type=type, username=username).all()
-            if not favorite:
-                return {"message": "Favorito não encontrado"}, 404
             return FavoriteSchema(many=True).dump(favorite), 200
         except Exception as e:
             return {"message": "Erro interno no servidor", "errors": str(e)}, 500
