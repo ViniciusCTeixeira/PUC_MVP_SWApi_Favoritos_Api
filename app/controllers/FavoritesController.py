@@ -137,7 +137,7 @@ class FavoriteDetailByIdUsername(Resource):
 @favorites_ns.param('type', 'Tipo do favorito')
 @favorites_ns.param('username', 'Nome de usuário')
 class FavoriteDetailByTypeUsername(Resource):
-    @favorites_ns.response(200, 'Success', api_favorite_models['favorite_response_model'], as_list=False)
+    @favorites_ns.response(200, 'Success', api_favorite_models['favorite_response_model'], as_list=True)
     @favorites_ns.response(400, 'Validation Error', api_error_models['error_model'])
     @favorites_ns.response(404, 'Not Found', api_error_models['error_model'])
     @favorites_ns.response(500, 'Internal Server Error', api_error_models['error_model'])
