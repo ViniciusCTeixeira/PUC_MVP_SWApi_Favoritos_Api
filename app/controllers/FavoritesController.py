@@ -143,11 +143,10 @@ class FavoriteDetailByTypeUsername(Resource):
     @favorites_ns.response(500, 'Internal Server Error', api_error_models['error_model'])
     def get(self, type, username):
         try:
-            favorite = Favorite.query.filter_by(type=type, username=username).first()
+            favorite = Favorite.query.filter_by(type=type, username=username).all()
             if not favorite:
                 return {"message": "Favorito não encontrado"}, 404
-            schema = FavoriteSchema()
-            return schema.dump(favorite), 200
+            return FavoriteSchema(many=True).dump(favorite), 200
         except Exception as e:
             return {"message": "Erro interno no servidor", "errors": str(e)}, 500
 
