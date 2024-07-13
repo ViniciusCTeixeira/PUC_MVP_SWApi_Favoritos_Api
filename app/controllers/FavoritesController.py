@@ -86,8 +86,7 @@ class FavoriteDetailByIdUsername(Resource):
             favorite = Favorite.query.filter_by(id=id, username=username).first()
             if not favorite:
                 return {"message": "Favorito não encontrado"}, 404
-            schema = FavoriteSchema()
-            return schema.dump(favorite), 200
+            return FavoriteSchema().dump(favorite), 200
         except Exception as e:
             return {"message": "Erro interno no servidor", "errors": str(e)}, 500
 
@@ -138,7 +137,6 @@ class FavoriteDetailByIdUsername(Resource):
 @favorites_ns.param('username', 'Nome de usuário')
 class FavoriteDetailByTypeUsername(Resource):
     @favorites_ns.response(200, 'Success', api_favorite_models['favorite_response_model'], as_list=True)
-    @favorites_ns.response(400, 'Validation Error', api_error_models['error_model'])
     @favorites_ns.response(404, 'Not Found', api_error_models['error_model'])
     @favorites_ns.response(500, 'Internal Server Error', api_error_models['error_model'])
     def get(self, type, username):
