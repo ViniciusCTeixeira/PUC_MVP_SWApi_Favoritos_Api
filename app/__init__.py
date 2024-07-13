@@ -15,13 +15,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Habilita CORS
-cors = CORS(app, resources={r"/*": {
+CORS(app, resources={r"/*": {
     "origins": "*",
+    "allow_headers": "*",
     "methods": ["GET", "POST", "PUT", "DELETE"],
-    "allow_headers": ["Content-Type", "Authorization"],
     "expose_headers": ["Content-Length"],
     "supports_credentials": True
 }})
+
 
 # Configura a API com Flask-RESTX
 api = Api(app, version='1.0', title='SWApi Favoritos', description='API para gerenciamento dos seus itens e personagens favoritos de Star Wars')
