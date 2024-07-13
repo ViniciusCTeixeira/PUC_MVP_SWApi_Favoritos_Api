@@ -15,13 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Habilita CORS
-CORS(app, resources={r"/*": {
-    "origins": "*",
-    "allow_headers": "*",
-    "methods": ["GET", "POST", "PUT", "DELETE"],
-    "expose_headers": ["Content-Length"],
-    "supports_credentials": True
-}})
+CORS(app, supports_credentials=True, methods=["GET", "PUT", "DELETE", "POST"], origins="*")
 
 
 # Configura a API com Flask-RESTX
